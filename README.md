@@ -1,7 +1,3 @@
-# NSM
-Redundancy of network components for high availability
-고가용성을 위한 네트워크 구성 요소 이중화
-
 ## 👩‍💻 팀원 소개
 
 
@@ -11,12 +7,23 @@ Redundancy of network components for high availability
 | <img  width="100px" src="https://avatars.githubusercontent.com/soljjang777" /> | <img width="100px" src="https://avatars.githubusercontent.com/Ungbbi" /> | <img width="100px" src="https://avatars.githubusercontent.com/leesj000603"/> |     <img width="100px" src="https://avatars.githubusercontent.com/seungunleeee"/>     |
 |                       [@soljjang777](https://github.com/soljjang777)                        |           [@Ungbbi](https://github.com/Ungbbi)           |                      [@leesj](https://github.com/leesj000603)                      |                    [@seungunleeee](https://github.com/seungunleeee)                     |
 
+# 고가용성을 위한 네트워크 구성 요소 이중화 
+▶PC-A에서 PC-B로 편지를 보낼 때 라우터가 갑자기 고장나거나 라우터의 인터페이스가 물리적, 논리적 문제로 인해 다운된다면❓❓<br> 
+▶PC-A에는 PC-B에 편지가 보내 질 때까지 한참을 기다리거나 최악의 경우 편지를 못 보낼 수도 있음❗<br> 
+<div style="display: inline-block;">
+  <img src="https://github.com/user-attachments/assets/efef5140-b2e1-49c4-b5e7-915f0f1c1de0" width="400">
+</div>
+<br><br>
+▶만약 이 상황이 하나의 기업이라면❓❓<br> 
+▶업무가 지연되거나 최악의 경우 완전히 중단되면 기업의 경우는 심각한 운영상의 손실로 이어짐❗<br> 
+<div style="display: inline-block;">
+  <img src="https://github.com/user-attachments/assets/c969e5e2-f905-4b51-9c99-96de6253290d" width="400">
+</div>
 
-# 1. 프로젝트 개요 (Overview) </br>
-프로젝트의 목적과 배경 설명
-HSRP를 사용하여 네트워크의 고가용성을 확보하고, 장애 발생 시에도 네트워크가 지속적으로 운영될 수 있도록 이중화 구성
-네트워크 이중화의 필요성
-HSRP가 무엇인지 간단히 설명
+
+
+네트워크의 안정성과 가용성을 보장하여 서비스 중단을 방지하고, 비즈니스 연속성을 유지하기 위해서 이중화는 필수이다. <br>
+네트워크의 장애 발생 시에도 백업 경로나 장치를 통해 트래픽을 지속적으로 전달할 수 있도록 구성하여 네트워크의 안정성과 가용성을 보장한다.
 # 2. 프로젝트 목표 (Objectives)
 고가용성을 보장하는 네트워크 인프라 구축
 주 라우터(Active Router) 장애 시, 대기 라우터(Standby Router)로의 자동 전환
