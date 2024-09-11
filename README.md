@@ -33,7 +33,14 @@
 <br><br>
 
 # HSRP란? (Hot Standby Routing Protocol)
-HSRP는 시스코에서 개발한 프로토콜로, 두 대 이상의 라우터나 멀티레이어 스위치가 하나의 가상 IP 주소를 공유하여 네트워크의 기본 게이트웨이 역할을 하도록 한다. 네트워크 상의 모든 클라이언트는 이 가상 IP 주소를 통해 트래픽을 라우팅하므로, HSRP로 설정된 장비 중 하나가 장애가 발생하더라도 다른 장비가 자동으로 이 역할을 이어받아 트래픽을 처리한다. 이를 통해 네트워크의 가용성을 크게 향상시킬 수 있다.
+HSRP는 시스코에서 개발한 프로토콜로, 두 대 이상의 라우터나 멀티레이어 스위치가 하나의 가상 IP 주소를 공유하여 네트워크의 기본 게이트웨이 역할을 하도록 한다.<br>
+<div style="display: inline-block;">
+  <img src="https://github.com/user-attachments/assets/2ec38be4-17df-47d8-9f0a-1e83cf724042" width="450">
+</div><br>
+네트워크 상의 모든 클라이언트는 이 가상 IP 주소를 통해 트래픽을 라우팅하므로, HSRP로 설정된 장비 중 하나가 장애가 발생하더라도 다른 장비가 자동으로 이 역할을 이어받아 트래픽을 처리한다. 이를 통해 네트워크의 가용성을 크게 향상시킬 수 있다.
+<div style="display: inline-block;">
+  <img src="https://github.com/user-attachments/assets/abd21d64-3397-46df-bab1-c88cb5c10130" width="450">
+</div><br>
 <br><br>
 
 # 시스템 구성도 
