@@ -65,7 +65,7 @@ int e0/0
 interface e0/1
   ip address 192.168.1.254 255.255.255.0
   no sh
-interface e0/2
+interface e0/0
   ip address 10.1.1.254 255.255.255.0
   no sh
 ```
@@ -74,7 +74,7 @@ interface e0/2
 interface e0/2
   ip address 192.168.1.253 255.255.255.0
   no sh
-interface e0/1
+interface e0/0
   ip address 10.1.1.253 255.255.255.0
   no sh
 ```
@@ -99,6 +99,30 @@ interface e0/1
   standby 2 ip 10.1.1.252
   standby 2 priority 100
   standby 2 preempt
+```
+### R1 Track 설정 및 적용
+```bash
+ip sla 1
+icmp-echo 10.1.1.2
+frequency 5
+exit
+ip sla schedule 1 life forever start-time now
+track 1 ip sla 1 reachability
+
+int e0/1
+ standby 1 track 1
+```
+### R2 Track 설정 및 적용
+```bash
+ip sla 1
+icmp-echo 10.1.1.2
+frequency 5
+exit
+ip sla schedule 1 life forever start-time now
+track 1 ip sla 1 reachability
+
+int e0/2
+ standby 1 track 1
 ```
 <br><br>
 
