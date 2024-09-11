@@ -38,7 +38,7 @@ HSRP는 시스코에서 개발한 프로토콜로, 두 대 이상의 라우터�
 
 # 시스템 구성도 
 <div style="display: inline-block;">
-  <img src="https://github.com/user-attachments/assets/73bcca73-c0f4-4415-a29f-5080370cac86" width="650">
+  <img src="https://github.com/user-attachments/assets/eac3495c-b6ac-473c-9609-9574422e3727" width="850">
 </div>
 <br><br>
 
@@ -47,9 +47,11 @@ HSRP는 시스코에서 개발한 프로토콜로, 두 대 이상의 라우터�
 ```bash
 ip 192.168.1.1/24 192.168.1.252
 ```
-### ISP IP 설정
+### ISP 인터페이서 IP 설정
 ```bash
-ip 10.1.1.1/24 10.1.1.252
+int e0/0
+ ip address 10.1.1.2
+ ip router 192.169.1.0 255.255.255.0
 ```
 ### R1 인터페이스 IP 설정
 ```bash
@@ -75,7 +77,7 @@ interface e0/1
   standby 1 ip 192.168.1.252
   standby 1 priority 100
   standby 1 preempt
-interface GigabitEthernet0/2
+interface e0/2
   standby 2 ip 10.1.1.252
   standby 2 priority 100
   standby 2 preempt
@@ -86,7 +88,7 @@ interface e0/2
   standby 1 ip 192.168.1.252
   standby 1 priority 100
   standby 1 preempt
-interface GigabitEthernet0/1
+interface e0/1
   standby 2 ip 10.1.1.252
   standby 2 priority 100
   standby 2 preempt
