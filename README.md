@@ -36,7 +36,7 @@ PC-A에는 PC-B에 ICMP 패킷이 보내 질 때까지 한참을 기다리거나
 <br><br>
 
 # HSRP란? (Hot Standby Routing Protocol)
-HSRP는 시스코에서 개발한 프로토콜로, 두 대 이상의 라우터나 멀티레이어 스위치가 하나의 가상 IP 주소를 공유하여<br> 네트워크의 기본 게이트웨이 역할을 하도록 함.<br>
+HSRP는 시스코에서 개발한 프로토콜로, 두 대 이상의 라우터나 멀티레이어 스위치가 하나의 가상 IP 주소와 맥 주소를 공유하여<br> 네트워크의 기본 게이트웨이 역할을 하도록 함.<br>
 <div style="display: inline-block;">
   <img src="https://github.com/user-attachments/assets/2ec38be4-17df-47d8-9f0a-1e83cf724042" width="450">
 </div><br>
