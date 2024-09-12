@@ -170,9 +170,9 @@ Ethernet0/2 - Group 1
 ### 🔵R1 Track 설정 및 적용
 ```cisco
 ip sla 1
-icmp-echo 10.1.1.2
-frequency 5
-exit
+  icmp-echo 10.1.1.2
+  frequency 5
+  exit
 ip sla schedule 1 life forever start-time now
 track 1 ip sla 1 reachability
 
@@ -198,9 +198,9 @@ R1#sh standby
 ### 🔵R2 Track 설정 및 적용
 ```cisco
 ip sla 1
-icmp-echo 10.1.1.2
-frequency 5
-exit
+  icmp-echo 10.1.1.2
+  frequency 5
+  exit
 ip sla schedule 1 life forever start-time now
 track 1 ip sla 1 reachability
 
