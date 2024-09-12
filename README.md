@@ -148,7 +148,7 @@ Ethernet0/1 - Group 1
 ```cisco
 interface e0/2
   standby 1 ip 192.168.1.1
-  standby 1 priority 100
+  standby 1 priority 95
   standby 1 preempt
 ```
 ### 🟢R2 HSRP 설정 확인
@@ -163,7 +163,7 @@ Ethernet0/2 - Group 1
   Preemption enabled
   Active router is 192.168.1.254, priority 100 (expires in 8.976 sec)
   Standby router is unknown
-  Priority 100 (default 100)
+  Priority 95 (configured 95)
   Group name is "hsrp-Et0/2-1" (default)
 
 ```
@@ -190,6 +190,10 @@ Track 1
   Latest RTT (millisecs) 1
   Tracked by:
     HSRP Ethernet0/1 1
+
+R1#sh standby
+...
+    Track object 1 state Up decrement 10
 ```
 ### 🔵R2 Track 설정 및 적용
 ```cisco
@@ -214,6 +218,11 @@ Track 1
   Latest RTT (millisecs) 1
   Tracked by:
     HSRP Ethernet0/2 1
+
+R2#sh standby
+...
+    Track object 1 state Up decrement 10
+
 ```
 <br><br>
 
