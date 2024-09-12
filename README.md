@@ -69,7 +69,7 @@ GATEWAY     : 192.168.1.1
 int e0/0
  ip address 10.1.1.2 255.255.255.0
  no sh
-ip route 192.169.1.0 255.255.255.0 e0/0
+ip route 192.168.1.0 255.255.255.0 e0/0
 ```
 ### 🟢ISP Interface IP 설정 확인
 ```cisco
@@ -78,7 +78,7 @@ ISP#sh ip ro
       10.0.0.0/8 is variably subnetted, 2 subnets, 2 masks
 C        10.1.1.0/24 is directly connected, Ethernet0/0
 L        10.1.1.2/32 is directly connected, Ethernet0/0
-S     192.169.1.0/24 is directly connected, Ethernet0/0
+S     192.168.1.0/24 is directly connected, Ethernet0/0
 
 
 ISP#sh ip int b
