@@ -10,20 +10,23 @@
 <br><br>
 
 # 고가용성을 위한 네트워크 구성 요소 이중화 
-▶PC-A에서 PC-B로 ICMP 패킷을 보낼 때 라우터가 갑자기 고장나거나 라우터의 인터페이스가 물리적, 논리적 문제로 인해 다운된다면❓❓<br> 
-▶PC-A에는 PC-B에 ICMP 패킷이 보내 질 때까지 한참을 기다리거나 최악의 경우 편지를 못 보낼 수도 있음❗<br> 
+PC-A에서 PC-B로 ICMP 패킷을 보낼 때 라우터가 갑자기 고장나거나 라우터의 인터페이스가 물리적, 논리적 문제로 인해 다운된다면❓❓<br> 
 <div style="display: inline-block;">
   <img src="https://github.com/user-attachments/assets/efef5140-b2e1-49c4-b5e7-915f0f1c1de0" width="400">
 </div>
-<br>
-▶만약 이 상황이 하나의 기업이라면❓❓<br> 
-▶업무가 지연되거나 최악의 경우 완전히 중단되면 기업의 경우는 심각한 운영상의 손실로 이어짐❗<br> 
+
+PC-A에는 PC-B에 ICMP 패킷이 보내 질 때까지 한참을 기다리거나 최악의 경우 편지를 못 보낼 수도 있음❗
+<br><br>
+
+만약 이 상황이 하나의 기업이라면❓❓<br> 
 <div style="display: inline-block;">
   <img src="https://github.com/user-attachments/assets/c969e5e2-f905-4b51-9c99-96de6253290d" width="400">
 </div>
-<br>
-즉, 네트워크의 안정성과 가용성을 보장하여 서비스 중단을 방지하고, 비즈니스 연속성을 유지하기 위해서 이중화는 필수이다. <br>
-**네트워크의 장애 발생 시에도 백업 경로나 장치를 통해 트래픽을 지속적으로 전달할 수 있도록 구성하여 네트워크의 안정성과 가용성을 보장해야한다.**
+
+업무가 지연되거나 최악의 경우 완전히 중단되면 기업의 경우는 심각한 운영상의 손실로 이어짐❗
+
+**즉, 네트워크의 안정성과 가용성을 보장하여 서비스 중단을 방지하고, 비즈니스 연속성을 유지하기 위해서 이중화는 필수이다. <br>
+네트워크의 장애 발생 시에도 백업 경로나 장치를 통해 트래픽을 지속적으로 전달할 수 있도록 구성하여 네트워크의 안정성과 가용성을 보장해야한다.**
 <br><br>
 
 # 네트워크 장비 이중화
@@ -33,14 +36,21 @@
 <br><br>
 
 # HSRP란? (Hot Standby Routing Protocol)
-HSRP는 시스코에서 개발한 프로토콜로, 두 대 이상의 라우터나 멀티레이어 스위치가 하나의 가상 IP 주소를 공유하여 네트워크의 기본 게이트웨이 역할을 하도록 한다.<br>
+HSRP는 시스코에서 개발한 프로토콜로, 두 대 이상의 라우터나 멀티레이어 스위치가 하나의 가상 IP 주소를 공유하여<br> 네트워크의 기본 게이트웨이 역할을 하도록 함.<br>
 <div style="display: inline-block;">
   <img src="https://github.com/user-attachments/assets/2ec38be4-17df-47d8-9f0a-1e83cf724042" width="450">
 </div><br>
-네트워크 상의 모든 클라이언트는 이 가상 IP 주소를 통해 트래픽을 라우팅하므로, HSRP로 설정된 장비 중 하나가 장애가 발생하더라도 다른 장비가 자동으로 이 역할을 이어받아 트래픽을 처리한다. 이를 통해 네트워크의 가용성을 크게 향상시킬 수 있다.
+네트워크 상의 모든 클라이언트는 이 가상 IP 주소를 통해 트래픽을 라우팅하므로,
 <div style="display: inline-block;">
   <img src="https://github.com/user-attachments/assets/abd21d64-3397-46df-bab1-c88cb5c10130" width="450">
 </div><br>
+HSRP로 설정된 장비 중 하나가 장애가 발생하더라도 다른 장비가 자동으로 이 역할을 이어받아 트래픽을 처리함.
+<div style="display: inline-block;">
+  <img src="https://github.com/user-attachments/assets/6c4c8f02-6de5-4e65-9c31-4d40168f57db" width="450">
+</div><br>
+
+**이를 통해 네트워크의 가용성을 크게 향상시킬 수 있다.**
+
 <br><br>
 
 # 시스템 구성도 
@@ -244,7 +254,7 @@ R2#sh standby
 * 그러나 preempt 기능이 설정되어 있지 않으면, Standby 라우터가 Active 역할을 자동으로 가져가지 않음. 이로 인해, 네트워크에서 장애가 복구되지 않음.<br>
 * 
 **따라서, HSRP 구성 시 preempt 설정을 통해 우선순위가 높은 라우터가 자동으로 Active 역할을 할 수 있도록 설정하는 것이 중요함.**
-<br>
+<br><br>
 
 ### 상황 2. Line Protocol 트래킹의 한계
 아래와 같이 Line Protocol을 사용하여 R1과 R2에 연결된 인터페이스의 트래킹을 설정했으나, 이는 다음과 같은 한계를 가짐 :
@@ -258,6 +268,28 @@ R2#sh standby
 * 실제로 통신을 원하는 목적지 장비와의 연결 상태(Reachability)를 추적하지는 못함. <br>
 
 **이러한 한계를 해결하기 위해 IP SLA를 사용하여, 특정 경로의 연결 상태를 ICMP 패킷을 통해 주기적으로 모니터링하는 방법을 결정함.** <br>
+```cisco
+R1(config-if)#ip sla 1
+R1(config-ip-sla)#icmp-echo 10.1.1.2
+R1(config-ip-sla-echo)#frequency 5
+R1(config-ip-sla-echo)#exit
+R1(config)#ip sla schedule 1 life forever start-time now
+R1(config)#track 1 ip sla 1 reachability
+
+R1(config-track)#int e0/1
+R1(config-if)# standby 1 track 1
+```
+```cisco
+R2(config-if)#ip sla 1
+R2(config-ip-sla)#icmp-echo 10.1.1.2
+R2(config-ip-sla-echo)#frequency 5
+R2(config-ip-sla-echo)#exit
+R2(config)#ip sla schedule 1 life forever start-time now
+R2(config)#track 1 ip sla 1 reachability
+
+R2(config-track)#int e0/2
+R2(config-if)# standby 1 track 1
+```
 
 * IP SLA 프로세스를 생성하여 원하는 경로에 대해 ICMP 에코 요청을 주고받도록 설정함.
 * 생성된 IP SLA 프로세스를 트랙(Track) 객체에 등록하여, 실시간으로 경로의 연결 상태를 보다 정밀하게 감시할 수 있도록 구성함. <br>
@@ -265,12 +297,13 @@ R2#sh standby
 **이 설정을 통해, 네트워크 경로의 상태를 정확히 추적하고 네트워크의 가용성을 보장할 수 있음.**
 <br><br>
 
-# 사용된 네트워크 장비 및 소프트웨어 
+# 사용된 네트워크 모니터링 도구 및 소프트웨어 
 <div style="display: inline-block;">
   <img src="https://github.com/user-attachments/assets/518690f3-c6fc-49c7-aa31-be5739cf61e6" width="450">
 </div>
- * 네트워크 모니터링 도구 : WireShark Version 4.0.3 <br>
- * 사용된 소프트웨어 : Gns3 Version 2.2.39
+
+ **네트워크 모니터링 도구 : WireShark Version 4.0.3** <br>
+ **사용된 소프트웨어 : Gns3 Version 2.2.39**
 <br><br>
 
 # 회고
