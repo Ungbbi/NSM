@@ -236,11 +236,24 @@ R2#sh standby
 ```
 <br><br>
 
-# 네트워크 구성 테스트
- * HSRP 전환 시나리오 테스트<br>
- * Active 라우터가 비정상 동작할 때 Standby 라우터로의 자동 전환 여부<br>
- * 장애 발생 시 서비스 연속성 테스트<br>
- * 네트워크 성능 테스트 (전환 시간, 장애 복구 시간 등)<br>
+# 테스트
+1. PC1 -> ISP로 ICMP 전송 및 경로 확인
+```cisco
+PC1> ping 10.1.1.2
+
+84 bytes from 10.1.1.2 icmp_seq=1 ttl=254 time=0.909 ms
+84 bytes from 10.1.1.2 icmp_seq=2 ttl=254 time=0.448 ms
+84 bytes from 10.1.1.2 icmp_seq=3 ttl=254 time=0.511 ms
+84 bytes from 10.1.1.2 icmp_seq=4 ttl=254 time=0.681 ms
+84 bytes from 10.1.1.2 icmp_seq=5 ttl=254 time=0.435 ms
+
+PC1> trace  10.1.1.2
+trace to 10.1.1.2, 8 hops max, press Ctrl+C to stop
+ 1   192.168.1.254   0.328 ms  0.141 ms  0.139 ms
+ 2   *10.1.1.2   0.926 ms (ICMP type:3, code:3, Destination port unreachable)
+```
+2. 
+
 <br><br>
 
 # 💥트러블 슈팅
@@ -314,7 +327,7 @@ HSRP는 기본적으로 한 라우터만 활성 상태로 처리하기 때문에
 # 회고
 | 이름   | 코멘트   |
 |--------|----------|
-| 노솔리 | 즐거웠다 |
+| 노솔리 | HSRP에 대해 공부하면서 네트워크 이중화의 중요성을 한 번 인식 하고 갈 수 있어서 좋았고 구현을 통해 다양한 지식을 습득할 수 있어서 좋았습니다. |
 | 박웅빈 | 즐거웠다 |
 | 이승준 | HSRP를 사용한 라우터 이중화를 구현하면서 상태 변화, 선출 과정, 트래킹, ip sla, hello packet, GARP에 대한 지식을 습득 할 수 있었고 상태 전환과정을 이해할 수 있었습니다. |
 | 이승언 | 즐거웠다 |
