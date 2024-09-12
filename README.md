@@ -50,18 +50,43 @@ HSRP는 시스코에서 개발한 프로토콜로, 두 대 이상의 라우터�
 <br><br>
 
 # HSRP 설정 및 구성 
-### PC1 IP 설정
-```bash
+### 🔵PC1 IP 설정
+```cisco
 ip 192.168.1.1/24 192.168.1.252
 ```
-### ISP 인터페이서 IP 설정
-```bash
-int e0/0
- ip address 10.1.1.2
- ip router 192.169.1.0 255.255.255.0
+### 🟢PC1 IP 설정 확인
+```cisco
+PC1> sh ip
+
+NAME        : PC1[1]
+IP/MASK     : 192.168.1.1/24
+GATEWAY     : 192.168.1.252
+...
 ```
-### R1 인터페이스 IP 설정
-```bash
+### 🔵ISP Interface IP 설정
+```cisco
+int e0/0
+ ip address 10.1.1.2 255.255.255.0
+ no sh
+ip route 192.169.1.0 255.255.255.0 e0/0
+```
+### 🟢ISP Interface IP 설정 확인
+```cisco
+ISP#sh ip ro
+...
+      10.0.0.0/8 is variably subnetted, 2 subnets, 2 masks
+C        10.1.1.0/24 is directly connected, Ethernet0/0
+L        10.1.1.2/32 is directly connected, Ethernet0/0
+S     192.169.1.0/24 is directly connected, Ethernet0/0
+
+
+ISP#sh ip int b
+Interface                  IP-Address      OK? Method Status                Protocol
+Ethernet0/0                10.1.1.2        YES manual up                    up
+...
+```
+### 🔵R1 Interface IP 설정
+```cisco
 interface e0/1
   ip address 192.168.1.254 255.255.255.0
   no sh
@@ -69,8 +94,15 @@ interface e0/0
   ip address 10.1.1.254 255.255.255.0
   no sh
 ```
-### R2 인터페이스 IP 설정
-```bash
+### 🟢R1 Interface IP 설정 확인
+```cisco
+R1#sh ip int b
+Interface                  IP-Address      OK? Method Status                Prot        ocol
+Ethernet0/0                10.1.1.254      YES manual up                    up          
+Ethernet0/1                192.168.1.254   YES manual up                    up 
+```
+### 🔵R2 Interface IP 설정
+```cisco
 interface e0/2
   ip address 192.168.1.253 255.255.255.0
   no sh
@@ -78,30 +110,64 @@ interface e0/0
   ip address 10.1.1.253 255.255.255.0
   no sh
 ```
-### R1 HSRP 설정
-```bash
+### 🟢R2 Interface IP 설정 확인
+```cisco
+R2#sh ip int b
+Interface                  IP-Address      OK? Method Status                Protocol
+Ethernet0/0                10.1.1.253      YES manual up                    up  
+Ethernet0/1                unassigned      YES NVRAM  administratively down down
+Ethernet0/2                192.168.1.253   YES manual up                    up
+...
+```
+### 🔵R1 HSRP 설정
+```cisco
 interface e0/1
-  standby 1 ip 192.168.1.252
+  standby 1 ip 192.168.1.1
   standby 1 priority 100
   standby 1 preempt
-interface e0/2
-  standby 2 ip 10.1.1.252
-  standby 2 priority 100
-  standby 2 preempt
 ```
-### R2 HSRP 설정
-```bash
+### 🟢R1 HSRP 설정 확인
+```cisco
+R1#sh standby
+Ethernet0/1 - Group 1
+  State is Speak
+  Virtual IP address is 192.168.1.1
+  Active virtual MAC address is unknown
+    Local virtual MAC address is 0000.0c07.ac01 (v1 default)
+  Hello time 3 sec, hold time 10 sec
+    Next hello sent in 2.768 secs
+  Preemption enabled
+  Active router is unknown
+  Standby router is unknown
+  Priority 100 (default 100)
+  Group name is "hsrp-Et0/1-1" (default)
+
+```
+### 🔵R2 HSRP 설정
+```cisco
 interface e0/2
-  standby 1 ip 192.168.1.252
+  standby 1 ip 192.168.1.1
   standby 1 priority 100
   standby 1 preempt
-interface e0/1
-  standby 2 ip 10.1.1.252
-  standby 2 priority 100
-  standby 2 preempt
 ```
-### R1 Track 설정 및 적용
-```bash
+### 🟢R2 HSRP 설정 확인
+```cisco
+R2#sh standby
+Ethernet0/2 - Group 1
+  State is Listen
+  Virtual IP address is 192.168.1.1
+  Active virtual MAC address is 0000.0c07.ac01
+    Local virtual MAC address is 0000.0c07.ac01 (v1 default)
+  Hello time 3 sec, hold time 10 sec
+  Preemption enabled
+  Active router is 192.168.1.254, priority 100 (expires in 8.976 sec)
+  Standby router is unknown
+  Priority 100 (default 100)
+  Group name is "hsrp-Et0/2-1" (default)
+
+```
+### 🔵R1 Track 설정 및 적용
+```cisco
 ip sla 1
 icmp-echo 10.1.1.2
 frequency 5
@@ -112,8 +178,20 @@ track 1 ip sla 1 reachability
 int e0/1
  standby 1 track 1
 ```
-### R2 Track 설정 및 적용
-```bash
+### 🟢R1 Track 설정 확인
+```cisco
+R1#sh track
+Track 1
+  IP SLA 1 reachability
+  Reachability is Up
+    2 changes, last change 00:00:59
+  Latest operation return code: OK
+  Latest RTT (millisecs) 1
+  Tracked by:
+    HSRP Ethernet0/1 1
+```
+### 🔵R2 Track 설정 및 적용
+```cisco
 ip sla 1
 icmp-echo 10.1.1.2
 frequency 5
@@ -123,6 +201,18 @@ track 1 ip sla 1 reachability
 
 int e0/2
  standby 1 track 1
+```
+### 🟢R2 Track 설정 확인
+```cisco
+R2#sh track
+Track 1
+  IP SLA 1 reachability
+  Reachability is Up
+    2 changes, last change 00:00:38
+  Latest operation return code: OK
+  Latest RTT (millisecs) 1
+  Tracked by:
+    HSRP Ethernet0/2 1
 ```
 <br><br>
 
