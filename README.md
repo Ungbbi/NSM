@@ -306,11 +306,16 @@ R2(config-if)# standby 1 track 1
  **사용된 소프트웨어 : Gns3 Version 2.2.39**
 <br><br>
 
+# 추후 계획  
+HSRP는 기본적으로 한 라우터만 활성 상태로 처리하기 때문에 로드밸런싱(sharing)을 구현하기 위해서 추후 Multiple Group HSRP를 사용해 보고자 한다. <br>
+![image](https://github.com/user-attachments/assets/7434a44d-4296-4dda-a2a4-b8db67b812c9)
+
+
 # 회고
 | 이름   | 코멘트   |
 |--------|----------|
 | 노솔리 | 즐거웠다 |
 | 박웅빈 | 즐거웠다 |
-| 이승준 | HSRP를 사용한 라우터 이중화를 구현하면서 상태 변화, 선출 과정, 트래킹, ip sla, hello packet, GARP에 대한 지식을 습득 할 수 있었고 상태 전환과정을 이해할 수 있었습니다. HSRP는 기본적으로 한 라우터만 활성 상태로 처리하기 때문에 로드밸런싱을 구현하기 위해서 추후 Multiple Group HSRP를 사용해 보고자 합니다. |
+| 이승준 | HSRP를 사용한 라우터 이중화를 구현하면서 상태 변화, 선출 과정, 트래킹, ip sla, hello packet, GARP에 대한 지식을 습득 할 수 있었고 상태 전환과정을 이해할 수 있었습니다. |
 | 이승언 | 즐거웠다 |
 
