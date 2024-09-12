@@ -252,7 +252,7 @@ R2#sh standby
 
 * 라우터의 인터페이스에 장애가 발생했을 때 Active 라우터의 우선순위(priority) 값이 감소하고, Standby 라우터가 Active 라우터보다 높은 우선순위를 가지게 되면서 Active로 변경 됨.
 * 그러나 preempt 기능이 설정되어 있지 않으면, Standby 라우터가 Active 역할을 자동으로 가져가지 않음. 이로 인해, 네트워크에서 장애가 복구되지 않음.<br>
-* 
+  
 **따라서, HSRP 구성 시 preempt 설정을 통해 우선순위가 높은 라우터가 자동으로 Active 역할을 할 수 있도록 설정하는 것이 중요함.**
 <br><br>
 
