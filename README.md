@@ -64,7 +64,7 @@ GATEWAY     : 192.168.1.1
 
 ...
 ```
-### 🔵ISP Interface IP 설정
+### 🔵ISP Interface IP 설정 및 Static Routing
 ```cisco
 int e0/0
  ip address 10.1.1.2 255.255.255.0
