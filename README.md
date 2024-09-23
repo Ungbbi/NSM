@@ -2,10 +2,10 @@
 
 
 
-|                                         박정주                                         |                                      박웅빈                                      |
-| :-------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------: |
-| <img  width="100px" src="https://avatars.githubusercontent.com/gorapang" /> | <img width="100px" src="https://avatars.githubusercontent.com/Ungbbi" /> |
-|                       [@gorapang](https://github.com/gorapang)                        |           [@Ungbbi](https://github.com/Ungbbi)           |
+| 노솔리 | 박웅빈 | 이승준 | 이승언 |
+|:-----------:|:-----------:|:-----------:|:-----------:|
+| <img width="100px" src="https://avatars.githubusercontent.com/soljjang777" /> | <img width="100px" src="https://avatars.githubusercontent.com/Ungbbi" /> | <img width="100px" src="https://avatars.githubusercontent.com/leesj000603"/> | <img width="100px" src="https://avatars.githubusercontent.com/seungunleeee"/> |
+| [@soljjang777](https://github.com/soljjang777) | [@Ungbbi](https://github.com/Ungbbi) | [@leesj000603](https://github.com/leesj000603) | [@seungunleeee](https://github.com/seungunleeee) |
 
 <br><br>
 
